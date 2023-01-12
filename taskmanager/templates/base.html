@@ -1,16 +1,89 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta
-				name="viewport"
-				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta
-				http-equiv="X-UA-Compatible"
-				content="ie=edge">
-		<title>Task Manager</title>
-	</head>
-	<body>
-		Hello World!
-	</body>
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/output.css') }}"
+      type="text/css"
+    />
+    <script
+      defer
+      src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+    <title>Task Manager</title>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="container mt-2 sm:flex sm:justify-between items-center">
+      <div class="flex items-center">
+        <div id="nav-button" class="block sm:hidden">
+          <!-- mobile menu button -->
+
+          <button class="btn btn-square btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block w-5 h-5 stroke-current"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Logo / home link -->
+        <div class="mx-auto">
+          <a href="{{ url_for('home') }}" class="-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6 stroke-blue-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- main navigation -->
+      <nav
+        class="container left-0 absolute mt-1 sm:w-auto sm:!block sm:relative"
+      >
+        <ul
+          class="grid sm:flex sm:gap-x-4 rounded-md p-2 bg-secondary sm:bg-inherit sm:text-primary text-primary-content"
+        >
+          <li class="">
+            <a href="{{ url_for('home') }}" class="">Home</a>
+          </li>
+          <li class="">
+            <a href="" class="">New task</a>
+          </li>
+          <li class="">
+            <a href="{{ url_for('categories') }}" class="">Categories</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main content -->
+    <main class="container mt-16">{% block content %} {% endblock %}</main>
+
 </html>
