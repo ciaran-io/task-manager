@@ -1,0 +1,13 @@
+{
+	"scripts": {
+		"watch-css": "postcss ./taskmanager/static/css/main.css -o taskmanager/static/dist/output.css --watch"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.13",
+		"daisyui": "^2.46.1",
+		"postcss": "^8.4.21",
+		"postcss-cli": "^10.1.0",
+		"prettier": "^2.8.2",
+		"tailwindcss": "^3.2.4"
+	}
+}
