@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<section class="text-center space-y-4">
+  <h3>Delete Category</h3>
+
+  <form
+    action="{{ url_for('delete_category', category_id=category.id) }}"
+    method="POST"
+    class="space-y-4"
+  >
+    <div>
+      📁
+      <label for="category_name"></label>
+      <input
+        type="text"
+        class="input input-sm input-bordered input-primary w-full max-w-xs"
+        name="category_name"
+        id="category_name"
+        minlength="3"
+        maxlength="25"
+        required
+        value="{{ category.category_name }}"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+  </form>
+</section>
+{% endblock %}
