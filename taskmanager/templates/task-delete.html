@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+  <section class="text-center space-y-4">
+    <h3>Add Task</h3>
+
+    <form
+      action="{{ url_for('edit_task', task_id=task.id) }}"
+      method="POST"
+      class="space-y-4"
+    >
+      <div>
+        📁
+        <label for="task_names"></label>
+        <input
+          type="text"
+          class="input input-sm input-bordered input-primary w-full max-w-xs"
+          name="task_name"
+          id="task_names"
+          minlength="3"
+          maxlength="25"
+          required
+          value="{{ task.task_name }}"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-sm btn-primary">Edit</button>
+    </form>
+  </section>
+{% endblock %}
