@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+  <section class="text-center space-y-4">
+    <h1 class="text-2xl">Add Task</h1>
+
+    <form method="POST" action="{{ url_for('add_task') }}">
+      <!-- task name -->
+      <div>
+        <label for="task_name"></label>
+        <input id="task_name"
+          placeholder="Task Name"
+          name="task_name"
+          minlength="5"
+          maxlength="50"
+          type="text"
+          required/>
+      </div>
+      <!-- task description -->
+      <div>
+        <label for="task_description"></label>
+        <textarea id="task_description"
+          placeholder="Task Description"
+          name="task_description"
+          minlength="5"
+          maxlength="200"
+          type="text"
+          required></textarea>
+      </div>
+      <!-- due date -->
+      <div>
+        <label for="due_date"></label>
+        <input id="due_date"
+          name="due_date"
+          type="date"
+          required/>
+      </div>
+      <!-- category id -->
+      <div>
+        <label for="category_id"></label>
+        <select id="category_id" name="category_id" class="validate" required>
+          <option value="" disabled selected>Choose Category</option>
+          {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.category_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- is urgent -->
+      <div>
+        <label for="is_urgent">Urgent</label>
+        <input id="is_urgent" name="is_urgent" type="checkbox"/>
+      </div>
+      <!-- submit button -->
+      <div>
+        <button type="submit">Add Task</button>
+      </div>
+    </form>
+
+  </section>
+{% endblock %}

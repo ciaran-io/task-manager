@@ -47,6 +47,30 @@ def delete_category(category_id):
     return render_template("category-delete.html", category=category)
 
 
+@app.route("/add-task", methods=["GET", "POST"])
+def add_task():
+    categories_all = list(Category.query.order_by(Category.category_name).all())
+    if request.method == "POST":
+        task_name = request.form.get("task_name")
+        task_description = request.form.get("task_description")
+        is_urgent = bool(True if request.form.get("is_urgent") else False)
+        due_date = request.form.get("due_date")
+        category_id = request.form.get("category_id")
+
+        task = Task(
+            task_name=task_name,
+            task_description=task_description,
+            is_urgent=is_urgent,
+            due_date=due_date,
+            category_id=category_id
+        )
+        print(is_urgent, type(is_urgent))
+        db.session.add(task)
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("task-add.html", categories=categories_all)
+
+
 @app.route("/edit-task/<int:task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     task = Task.query.get_or_404(task_id)
