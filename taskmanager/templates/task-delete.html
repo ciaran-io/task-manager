@@ -3,7 +3,7 @@
     <h3>Add Task</h3>
 
     <form
-      action="{{ url_for('edit_task', task_id=task.id) }}"
+      action="{{ url_for('delete_task', task_id=task.id) }}"
       method="POST"
       class="space-y-4"
     >
@@ -22,7 +22,7 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-sm btn-primary">Edit</button>
+      <button type="submit" class="btn btn-sm btn-primary">Delete</button>
     </form>
   </section>
 {% endblock %}
