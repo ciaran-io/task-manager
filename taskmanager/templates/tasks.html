@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="space-y-4">
+  <h1 class="text-center text-2xl">All Tasks</h1>
+
+  <div>
+    <a href="{{ url_for('add_task') }}" class=""> Add New Task </a>
+  </div>
+
+  <div class="md:max-w-sm">
+    {% for task in tasks|sort(attribute="due_date") %}
+    <div
+      tabindex="0"
+      class="collapse collapse-plus border border-secondary-300 bg-base-300 rounded-box"
+    >
+      <!-- Daisy ui collapse content on click -->
+      <input type="checkbox" />
+      <div class="collapse-title text-xl font-medium">
+        {{ task.task_name }} {% if task.is_urgent == True %} | Urgent {% endif
+        %}
+      </div>
+
+      <div class="collapse-content">
+        <strong>
+          {{ task.category }}
+          <span class="text-sm"
+            >
+            {{ task.due_date.strftime("%d-%B-%Y") }}
+          </span>
+        </strong>
+
+        <p>{{ task.task_description }}</p>
+        <div class="flex justify-end gap-x-2">
+          <a
+            href="{{ url_for('edit_task', task_id=task.id) }}"
+            class="btn btn-sm btn-outline btn-primary"
+            >Edit</a
+          >
+          <a
+            href="{{ url_for('delete_task', task_id=task.id) }}"
+            class="btn btn-sm btn-outline btn-error"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
