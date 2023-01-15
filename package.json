@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"watch-css": "postcss ./taskmanager/static/css/main.css -o taskmanager/static/dist/output.css --watch"
+		"watch-css": "postcss ./taskmanager/static/css/input.css -o taskmanager/static/dist/main.css --watch"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.13",
