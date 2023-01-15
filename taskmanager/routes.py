@@ -12,8 +12,8 @@ def home():
 @app.route('/categories')
 def categories():
     # Get all categories from the database return as a list
-    categories= list(Category.query.order_by(Category.category_name).all())
-    return render_template("categories.html", categories=categories)
+    categories_all = list(Category.query.order_by(Category.category_name).all())
+    return render_template("categories.html", categories=categories_all)
 
 
 @app.route('/add-category', methods=["GET", "POST"])
