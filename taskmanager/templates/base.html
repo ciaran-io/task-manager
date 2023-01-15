@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='dist/output.css') }}"
+      href="{{ url_for('static', filename='dist/main.css') }}"
       type="text/css"
     />
     <script
@@ -62,7 +62,6 @@
           </a>
         </div>
       </div>
-
       <!-- main navigation -->
       <nav
         class="container left-0 absolute mt-1 sm:w-auto sm:!block sm:relative"
@@ -74,7 +73,7 @@
             <a href="{{ url_for('home') }}" class="">Home</a>
           </li>
           <li class="">
-            <a href="" class="">New task</a>
+            <a href="{{ url_for('add_task') }}" class="">New task</a>
           </li>
           <li class="">
             <a href="{{ url_for('categories') }}" class="">Categories</a>
@@ -85,5 +84,6 @@
 
     <!-- main content -->
     <main class="container mt-16">{% block content %} {% endblock %}</main>
+  </body>
 
 </html>
